@@ -16,6 +16,7 @@ public class Product {
     private Long id;
     private Double price;
     private Double taxRate;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

@@ -5,15 +5,14 @@ import lombok.*;
 
 @Entity
 @Data
+@NoArgsConstructor // Add this
 @AllArgsConstructor
-
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Username;
+    private String username; // Changed to lowercase
 
-    private String Password;
+    private String password; // Changed to lowercase
 }
