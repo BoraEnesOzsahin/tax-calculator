@@ -145,4 +145,46 @@ public class ProductRepositoryTest {
 
 
 
+
+    @Test
+    void testFindAllReturnsAllProductsRegardlessOfOwner() {
+        // Create and save User A
+        User userA = new User();
+        userA.setUsername("userA");
+        userA.setPassword("passA");
+        userA = userRepository.save(userA);
+
+        // Create and save User B
+        User userB = new User();
+        userB.setUsername("userB");
+        userB.setPassword("passB");
+        userB = userRepository.save(userB);
+
+        // Create products for each user
+        Product productA = new Product();
+        productA.setName("Product A");
+        productA.setPrice(100.0);
+        productA.setTaxRate(0.1);
+        productA.setOwner(userA);
+        productRepository.save(productA);
+
+        Product productB = new Product();
+        productB.setName("Product B");
+        productB.setPrice(200.0);
+        productB.setTaxRate(0.2);
+        productB.setOwner(userB);
+        productRepository.save(productB);
+
+        // Act: call findAll()
+        List<Product> allProducts = productRepository.findAll();
+
+        // Assert: both products are visible
+        assertEquals(2, allProducts.size());
+        assertTrue(allProducts.stream().anyMatch(p -> p.getName().equals("Product A")));
+        assertTrue(allProducts.stream().anyMatch(p -> p.getName().equals("Product B")));
+    }
+
+
+
+
 }
