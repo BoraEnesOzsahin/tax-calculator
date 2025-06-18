@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Data
+@Table(name = "users")
 @NoArgsConstructor // Add this
 @AllArgsConstructor
 public class User {
@@ -12,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username; // Changed to lowercase
+    private String username;
 
-    private String password; // Changed to lowercase
+    private String password; 
 }

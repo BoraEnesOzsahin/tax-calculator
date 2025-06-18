@@ -14,8 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 
 public class DataInitializer {
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
     
     @Bean
     // Run at startup
